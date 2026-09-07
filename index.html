@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casamento Hellen & Tharsis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-menta: #A4C3B2;
+            --verde-escuro: #5B826B;
+            --verde-profundo: #3E5C4A;
+            --areia-clara: #FAF7F2;
+            --areia-media: #F2EFE9;
+            --texto: #4A5568;
+            --texto-suave: #718096;
+            --gutter: clamp(16px, 4vw, 32px);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--areia-clara);
+            color: var(--texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+            color: var(--verde-escuro);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 var(--gutter);
+        }
+
+        /* ===== Seções com foto de fundo ===== */
+        .bg-section {
+            position: relative;
+            isolation: isolate;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bg-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        /* Fixo em desktop, scroll no mobile (iOS não suporta fixed com cover) */
+        @media (min-width: 1024px) and (hover: hover) {
+            .bg-section { background-attachment: fixed; }
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100svh;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: clamp(64px, 12vw, 120px) 0;
+            background-image: url("IMG_7059.JPG");
+            color: var(--areia-clara);
+        }
+
+        .hero::before {
+            background:
+                linear-gradient(to right, rgba(62, 92, 74, 0.88) 0%, rgba(62, 92, 74, 0.72) 55%, rgba(62, 92, 74, 0.35) 100%);
+        }
+
+        @media (max-width: 767px) {
+            .hero::before {
+                background:
+                    linear-gradient(to bottom, rgba(62, 92, 74, 0.45) 0%, rgba(62, 92, 74, 0.85) 45%, rgba(62, 92, 74, 0.92) 100%);
+            }
+            .hero { align-items: flex-end; }
+        }
+
+        .hero-text { max-width: 620px; }
+
+        .hero-text h1 {
+            font-size: clamp(2.6rem, 8vw, 4.4rem);
+            margin-bottom: 20px;
+            line-height: 1.05;
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+        }
+
+        .hero-date {
+            display: inline-block;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--verde-menta);
+            margin-bottom: 16px;
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            margin-bottom: 16px;
+            font-weight: 300;
+            color: rgba(250, 247, 242, 0.95);
+        }
+
+        .verse {
+            background-color: rgba(250, 247, 242, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: clamp(18px, 3vw, 24px);
+            border-radius: 16px;
+            border-left: 4px solid var(--verde-menta);
+            margin-top: 28px;
+            font-style: italic;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            color: rgba(250, 247, 242, 0.95);
+        }
+
+        .verse strong {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--verde-menta);
+            font-style: normal;
+        }
+
+        /* ===== STORY ===== */
+        .story {
+            padding: clamp(72px, 12vw, 140px) 0;
+            background-image: url("IMG_7060.JPG");
+        }
+
+        .story::before {
+            background: linear-gradient(to left, rgba(250, 247, 242, 0.96) 0%, rgba(250, 247, 242, 0.9) 50%, rgba(250, 247, 242, 0.55) 100%);
+        }
+
+        @media (max-width: 767px) {
+            .story::before {
+                background: rgba(250, 247, 242, 0.9);
+            }
+        }
+
+        .story-text {
+            max-width: 600px;
+            margin-left: auto;
+        }
+
+        @media (max-width: 767px) {
+            .story-text { margin-left: 0; }
+        }
+
+        .story-text h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 20px;
+        }
+
+        .story-text p {
+            font-size: clamp(1rem, 2.2vw, 1.1rem);
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .avulso-notice {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px dashed var(--verde-menta);
+            padding: clamp(16px, 3vw, 24px);
+            border-radius: 16px;
+            margin-top: 28px;
+            font-weight: 500;
+            color: var(--verde-escuro);
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        /* ===== GIFTS ===== */
+        .gifts-intro {
+            padding: clamp(80px, 14vw, 160px) 0;
+            text-align: center;
+            background-image: url("IMG_7062.JPG");
+        }
+
+        .gifts-intro::before {
+            background: rgba(62, 92, 74, 0.7);
+        }
+
+        .gifts-intro h2 {
+            font-size: clamp(2.2rem, 7vw, 3.4rem);
+            color: #fff;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .gifts-intro p {
+            color: rgba(250, 247, 242, 0.9);
+            font-weight: 300;
+            margin-top: 12px;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+
+        .gifts {
+            padding: clamp(40px, 8vw, 80px) 0 clamp(60px, 8vw, 100px);
+            background-color: var(--areia-clara);
+        }
+
+        .category-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            margin: clamp(32px, 6vw, 48px) 0 clamp(16px, 3vw, 24px);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--verde-menta);
+            display: inline-block;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+            gap: clamp(12px, 3vw, 24px);
+        }
+
+        /* Mobile: 2 colunas para caber mais na tela */
+        @media (max-width: 560px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .card {
+            background-color: var(--areia-media);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(164, 195, 178, 0.3);
+        }
+
+        @media (hover: hover) {
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 28px rgba(91, 130, 107, 0.15);
+            }
+            .card:hover .card-img img { transform: scale(1.05); }
+        }
+
+        .card-img {
+            aspect-ratio: 4 / 3;
+            background-color: var(--areia-clara);
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card-info {
+            padding: clamp(12px, 3vw, 20px);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: clamp(0.85rem, 2.2vw, 1rem);
+            color: var(--texto);
+        }
+
+        .card-price {
+            color: var(--verde-escuro);
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            margin-bottom: 14px;
+        }
+
+        .btn-presentear {
+            margin-top: auto;
+            background-color: var(--verde-escuro);
+            color: #fff;
+            border: none;
+            padding: clamp(10px, 2.5vw, 12px) 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            width: 100%;
+            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+            min-height: 44px;
+        }
+
+        .btn-presentear:hover,
+        .btn-presentear:focus-visible {
+            background-color: var(--verde-menta);
+            color: var(--texto);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: clamp(80px, 14vw, 160px) 0;
+            text-align: center;
+            background-image: url("IMG_7063.JPG");
+            color: var(--areia-clara);
+        }
+
+        .footer::before {
+            background: linear-gradient(to bottom, rgba(62, 92, 74, 0.6), rgba(62, 92, 74, 0.9));
+        }
+
+        .footer h2 {
+            color: #fff;
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            margin-bottom: 16px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .footer p {
+            line-height: 1.7;
+            max-width: 640px;
+            margin: 0 auto 12px;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            font-weight: 300;
+            color: rgba(250, 247, 242, 0.92);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(74, 85, 104, 0.5);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            padding: 16px;
+        }
+
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+        .modal-content {
+            background: var(--areia-clara);
+            padding: clamp(28px, 6vw, 40px);
+            border-radius: 24px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 2px solid var(--verde-menta);
+            transform: translateY(12px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+
+        .close-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 40px;
+            height: 40px;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--texto-suave);
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            margin-bottom: 12px;
+            color: var(--verde-escuro);
+            padding: 0 24px;
+        }
+
+        .pix-key {
+            background: var(--areia-media);
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            border: 2px dashed var(--verde-menta);
+            color: var(--texto);
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            background-color: var(--verde-escuro);
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 1rem;
+            min-height: 48px;
+        }
+
+        .btn-copy:hover { background-color: var(--verde-menta); color: var(--texto); }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero bg-section" aria-label="Hellen e Tharsis de braços abertos">
+        <div class="container">
+            <div class="hero-text">
+                <span class="hero-date">19 · 12 · 2026 — Rancho Girassol</span>
+                <h1>Hellen & Tharsis</h1>
+                <p>Durante quase 4 anos, o amor atravessou mais de 2 mil quilômetros. Cada dia de distância foi uma escolha e perseverança.</p>
+                <p>No dia 19 de dezembro de 2026, no Rancho Girassol, vamos dizer o "sim" que nossos corações já dizem há tanto tempo.</p>
+                <p>Vamos construir um lar onde caibam todos os planos de Deus, todas as risadas que guardamos pra quando estivéssemos perto, e todo o amor que nos carregou através desses quilômetros.</p>
+
+                <div class="verse">
+                    <strong>1 Coríntios 13:4-7</strong>
+                    "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha. Não maltrata, não procura seus próprios interesses, não se ira facilmente, não guarda rancor. O amor não se alegra com a injustiça, mas se alegra com a verdade. Tudo sofre, tudo crê, tudo espera, tudo persevera."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story bg-section" aria-label="Hellen e Tharsis caminhando de mãos dadas">
+        <div class="container">
+            <div class="story-text">
+                <h2 class="serif">Nosso Lar</h2>
+                <p>Para celebrar esse momento, gostaríamos que vocês fizessem parte dessa jornada.</p>
+                <p>Em vez de presentes físicos (afinal, vamos morar longe de vocês), gostaríamos de receber uma contribuição que nos ajude a montar nossa primeira casa juntos.</p>
+                <p>Escolha um dos itens abaixo e nos envie um PIX. Cada escolha é um pouco de vocês em nosso novo lar.</p>
+
+                <div class="avulso-notice">
+                    💚 Caso não possa selecionar um presente específico, basta escolher a opção "Itens avulsos" e mandar o valor que puder via PIX. Nosso maior presente é ter sua presença em nosso casamento!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIFTS -->
+    <section class="gifts-intro bg-section" id="presentes">
+        <div class="container">
+            <h2 class="serif">Lista de Presentes</h2>
+            <p>Escolha um item e nos ajude a montar nosso lar</p>
+        </div>
+    </section>
+
+    <section class="gifts">
+        <div class="container">
+            <div id="lista-presentes"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer bg-section" aria-label="Hellen e Tharsis dançando">
+        <div class="container">
+            <h2 class="serif">Com amor, Hellen & Tharsis</h2>
+            <p>Após enviar o PIX, você pode nos enviar uma mensagem e contar qual item escolheu! 💚</p>
+            <p>Deus te abençoe, nos vemos na festa!</p>
+        </div>
+    </footer>
+
+    <!-- PIX MODAL -->
+    <div class="modal-overlay" id="pixModal" role="dialog" aria-modal="true" aria-labelledby="modalItemName">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()" aria-label="Fechar">&times;</button>
+            <h3 class="serif modal-title">Presentear com <br><span id="modalItemName"></span></h3>
+            <p style="color: var(--texto-suave);">Valor: <strong id="modalItemPrice" style="color: var(--verde-escuro);"></strong></p>
+            <div class="pix-key" id="pixKey">077.323.365-26</div>
+            <button class="btn-copy" onclick="copyPix()">Copiar Chave PIX</button>
+        </div>
+    </div>
+
+    <script>
+        const gifts = [
+            // Cozinha
+            { category: "Cozinha", name: "Jogo de panelas (10 peças)", price: 500.00, img: "Jogo de panelas.webp" },
+            { category: "Cozinha", name: "Forno elétrico", price: 400.00, img: "Forno elétrico.webp" },
+            { category: "Cozinha", name: "Jogo de facas Tramontina", price: 180.00, img: "jogo de facas.webp" },
+            { category: "Cozinha", name: "Jogo de potes herméticos (12 peças)", price: 130.00, img: "potes herméticos.webp" },
+            { category: "Cozinha", name: "Aparelho de microondas", price: 500.00, img: "microondas.webp" },
+            { category: "Cozinha", name: "Liquidificador", price: 100.00, img: "liquidificador.webp" },
+            { category: "Cozinha", name: "Air Fryer", price: 300.00, img: "airfryer.webp" },
+            { category: "Cozinha", name: "Geladeira", price: 3000.00, img: "geladeira.webp" },
+            { category: "Cozinha", name: "Cooktop", price: 500.00, img: "cooktop.webp" },
+            { category: "Cozinha", name: "Cafeteira", price: 210.00, img: "cafeteira.webp" },
+            { category: "Cozinha", name: "Sanduicheira", price: 100.00, img: "sanduicheira.webp" },
+            { category: "Cozinha", name: "Itens avulsos", price: null, text: "Valor que puder", img: "itens avulsos.webp" },
+
+            // Sala
+            { category: "Sala", name: "Sofá 2 lugares", price: 1500.00, img: "sofá.jpg" },
+            { category: "Sala", name: "Tv 40 polegadas", price: 1200.00, img: "tv 40 polegadas.webp" },
+
+            // Quarto
+            { category: "Quarto", name: "Cama Box", price: 2800.00, img: "cama box.webp" },
+            { category: "Quarto", name: "Jogo de cama", price: 200.00, img: "jogo-de-cama-zelo-.webp" },
+            { category: "Quarto", name: "Edredom", price: 180.00, img: "edredom.webp" },
+            { category: "Quarto", name: "Guarda-roupa 6 portas", price: 1200.00, img: "Guarda-Roupa-6 portas.webp" },
+            { category: "Quarto", name: "Criado mudo (par)", price: 400.00, img: "criado mudo.webp" },
+            { category: "Quarto", name: "Cortina blackout", price: 200.00, img: "cortina.webp" }
+        ];
+
+        const container = document.getElementById('lista-presentes');
+        let currentCategory = '';
+        let htmlContent = '';
+
+        gifts.forEach(gift => {
+            if (gift.category !== currentCategory) {
+                if (currentCategory !== '') htmlContent += '</div>';
+                htmlContent += `<h3 class="category-title serif">${gift.category}</h3><div class="grid">`;
+                currentCategory = gift.category;
+            }
+
+            const priceText = gift.price ? `R$ ${gift.price.toLocaleString('pt-BR', {minimumFractionDigits: 2})}` : gift.text;
+            const imageSrc = gift.img ? gift.img : `https://placehold.co/400x300/a4c3b2/4a5568?text=${encodeURIComponent(gift.name)}`;
+
+            htmlContent += `
+                <div class="card">
+                    <div class="card-img">
+                        <img src="${imageSrc}" alt="${gift.name}" loading="lazy" onerror="this.src='https://placehold.co/400x300/a4c3b2/4a5568?text=Sem+Foto'">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-title">${gift.name}</div>
+                        <div class="card-price">${priceText}</div>
+                        <button class="btn-presentear" onclick="openModal('${gift.name}', '${priceText}')">🎁 Presentear</button>
+                    </div>
+                </div>
+            `;
+        });
+        htmlContent += '</div>';
+        container.innerHTML = htmlContent;
+
+        const modal = document.getElementById('pixModal');
+
+        function openModal(name, price) {
+            document.getElementById('modalItemName').innerText = name;
+            document.getElementById('modalItemPrice').innerText = price;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        function copyPix() {
+            const pix = document.getElementById('pixKey').innerText;
+            navigator.clipboard.writeText(pix).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                btn.innerText = 'Copiado! ✔️';
+                btn.style.backgroundColor = 'var(--verde-menta)';
+                btn.style.color = 'var(--texto)';
+                setTimeout(() => {
+                    btn.innerText = 'Copiar Chave PIX';
+                    btn.style.backgroundColor = '';
+                    btn.style.color = '';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
